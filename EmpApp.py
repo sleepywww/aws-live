@@ -19,6 +19,8 @@ db_conn = connections.Connection(
 )
 output = {}
 table = 'employee'
+table = 'payroll'
+table = 'performance'
 
 
 @app.route("/", methods=['GET', 'POST'])
@@ -80,6 +82,19 @@ def AddEmp():
     print("all modification done...")
     return render_template('AddEmpOutput.html', name=emp_name)
 
+@app.route("/getEmp", methods = ['GET']) 
+def getEmployee():
+    emp_id = request.form['emp_id']
+
+    cursor1 = db_conn.cursor()
+    cursor2 = db_conn.cursor()
+
+    if emp_id != "":
+        db_conn.cursor().execute("SELECT first_name FROM " + employee_table + " WHERE emp_id = " + emp_id)
+
+        first_name = db_conn.cursor().fetchone.__get__
+
+    return render_template("UpdateEmpPrf.html", first_name = first_name)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80, debug=True)
