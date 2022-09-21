@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Edit Employee Performance</title>
+        <style>
+            body {
+                background-color: whitesmoke;
+            }
+
+            button {
+                background-color: dodgerblue;
+                border: 1px solid transparent;
+                border-radius: 5px;
+                color: white;
+                height: 100%;
+                width: 80%;
+            }
+
+            button:hover {
+                background-color: white;
+                border: 1px solid dodgerblue;
+                border-radius: 5px;
+                color: dodgerblue
+            }
+
+            font {
+                color: black;
+                font-family: avenir;
+            }
+
+            h2 {
+                color: dodgerblue;
+            }
+
+            input {
+                color: grey;
+                font-size: 10pt;
+                height: 20px;
+                width: 85%;
+            }
+ 
+            span {
+                display: table-cell;
+                height: 25px;
+                text-align: left;
+            }
+
+            .button {
+                text-align: center;
+            }
+
+            .employee {
+                background-color: lightgrey;
+                border: 1px solid transparent;
+                border-radius: 15px;
+                height: 200px;
+                width: 750px;
+            }
+
+            .table {
+                display: table;
+                table-layout: fixed;
+                width: 80%;
+            }
+
+            .performance {
+                background-color: lightgrey;
+                border: 1px solid transparent;
+                border-radius: 15px;
+                height: 220px;
+                width: 750px;
+            }
+
+            .title {
+                font-size: 18pt;
+                font-weight: bold;
+            }
+
+
+        </style>
+    </head>
+
+    <center>
+        <font>
+            <h2>Employee Performance Overview</h2>
+
+            <body>
+                <div class = "employee">
+                    <p class = "title">Employee Info</p>
+
+                    <div class = "table">
+                        <span>Employee ID:</span>
+                        <span>First Name:</span>
+                        <span>Last Name:</span>
+                    </div>
+
+                    <form action="/addemp" autocomplete="on" method = "POST" enctype="multipart/form-data">
+                        <div class = "table">
+                            <span><input type="number" name="emp_id" placeholder = "XXXX" autofocus size="40"></span>
+                            <span><input type="text" name="first_name" placeholder = "Jay Sheng" disabled></span>
+                            <span><input type="text" name="last_name" placeholder = "Ho" disabled></span>
+                        </div>
+                    </form><br>
+
+                    <div class = "table">
+                        <span></span>
+                        <span class = "button"><button>Check Employee</button></span>
+                        <span></span>
+                    </div>
+                </div><br>
+
+                <div class = "performance">
+                    <p class = "title">Perfomance</p>
+
+                    <div class = "table">
+                        <span>In-Progress</span>
+                        <span>Completed</span>
+                        <span>Overdue</span>
+                        <span>Delayed</span>
+                        <span>Overall</span>
+                    </div>
+
+                    <div class = "table">
+                        <span>0</span>
+                        <span>0</span>
+                        <span>0</span>
+                        <span>0</span>
+                        <span>0</span>
+                    </div>
+                </div>
+            </body>
+        </font>
+    </center>
+</html>
