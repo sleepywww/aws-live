@@ -58,7 +58,7 @@
             }
 
             .number {
-                width: 20%;
+                width: 35%;
             }
 
             .table {
@@ -82,6 +82,26 @@
 
 
         </style>
+
+        <script>
+            function makeEditable(i1, i2, i3, i4) {
+                if (document.getElementById("btnSave").getAttribute("hidden")) {
+                    document.getElementById("btnEdit").innerText = "Cancel";
+                    document.getElementById(i1).disabled = false;
+                    document.getElementById(i2).disabled = false;
+                    document.getElementById(i3).disabled = false;
+                    document.getElementById(i4).disabled = false;
+                    document.getElementById("btnSave").removeAttribute("hidden");
+                } else {
+                    document.getElementById("btnEdit").innerText = "Edit";
+                    document.getElementById(i1).disabled = true;
+                    document.getElementById(i2).disabled = true;
+                    document.getElementById(i3).disabled = true;
+                    document.getElementById(i4).disabled = true;
+                    document.getElementById("btnSave").setAttribute("hidden", "hidden");
+                }
+            }
+        </script>
     </head>
 
     <center>
@@ -120,7 +140,7 @@
                 </div><br><br>
 
                 <div class = "performance">
-                    <p class = "title">Perfomance</p>
+                    <p class = "title">Performance</p>
 
                     <div class = "table">
                         <span>In-Progress</span>
@@ -134,17 +154,17 @@
                         <span>Overall</span>
                     </div>
 
-                    <form action="/editPrf" autocomplete="on" method = "POST" enctype="multipart/form-data">
+                    <form action="/editPrf" autocomplete="on" name = "prfForm" method = "POST" enctype="multipart/form-data">
                         <div class = "table">
-                            <span><input class = "number" type="number" name="prf_progressing" placeholder = "0" autofocus size="40" disabled></span>
+                            <span><input id = "iptProgess" class = "number" type="number" name="prf_progressing" placeholder = "0" autofocus size="40" disabled></span>
                             <span class = "gap"></span>
-                            <span><input class = "number" type="number" name="prf_completed" placeholder = "0" autofocus size="40" disabled></span>
+                            <span><input id = "iptComplete" class = "number" type="number" name="prf_completed" placeholder = "0" autofocus size="40" disabled></span>
                             <span class = "gap"></span>
-                            <span><input class = "number" type="number" name="prf_overdue" placeholder = "0" autofocus size="40" disabled></span>
+                            <span><input id = "iptOver" class = "number" type="number" name="prf_overdue" placeholder = "0" autofocus size="40" disabled></span>
                             <span class = "gap"></span>
-                            <span><input class = "number" type="number" name="prf_delayed" placeholder = "0" autofocus size="40" disabled></span>
+                            <span><input id = "iptDelay" class = "number" type="number" name="prf_delayed" placeholder = "0" autofocus size="40" disabled></span>
                             <span class = "gap"></span>
-                            <span><input class = "number" type="number" name="prf_overall" placeholder = "0" autofocus size="40" disabled>%</span>
+                            <span><input id = "optFinal" class = "number" type="number" name="prf_overall" placeholder = "0" autofocus size="40" disabled>%</span>
                         </div><br>
                     </form>
 
@@ -153,11 +173,11 @@
                         <span class = "gap"></span>
                         <span></span>
                         <span class = "gap"></span>
-                        <span><button>Edit</button></span>
+                        <span><button id = "btnEdit" type = "button" onclick = "makeEditable('iptProgess', 'iptComplete', 'iptOver', 'iptDelay')">Edit</button></span>
                         <span class = "gap"></span>
-                        <span><button>Cancel</button></span>
+                        <span></span>
                         <span class = "gap"></span>
-                        <span><button>Save</button></span>
+                        <span><button id = "btnSave" type = "button" hidden>Save</button></span>
                     </div>
                 </div>
             </body>
