@@ -58,7 +58,7 @@
             }
 
             .number {
-                width: 35%;
+                width: 40%;
             }
 
             .table {
@@ -100,6 +100,25 @@
                     document.getElementById(i4).disabled = true;
                     document.getElementById("btnSave").setAttribute("hidden", "hidden");
                 }
+            }
+
+            function calculatePerformance(prfForm) {
+                var completed = 0;
+                var overdue = 0;
+                var delayed = 0;
+
+                if (document.getElementById("iptCompleted").value.length != 0) {
+                    completed = parseFloat(document.getElementById("iptCompleted").value)
+                }
+                if (document.getElementById("iptOverdue").value.length != 0) {
+                    overdue = parseFloat(document.getElementById("iptOverdue").value)
+                }
+                if (document.getElementById("iptDelayed").value.length != 0) {
+                    delayed = parseFloat(document.getElementById("iptDelayed").value)
+                }
+
+                var performance = (((completed * 3) - ((overdue * 1) + (delayed * 2))) / (completed * 3) * 100);
+                document.getElementById("optPerformance").value = performance.toFixed(0);
             }
         </script>
     </head>
@@ -156,15 +175,15 @@
 
                     <form action="/editPrf" autocomplete="on" name = "prfForm" method = "POST" enctype="multipart/form-data">
                         <div class = "table">
-                            <span><input id = "iptProgess" class = "number" type="number" name="prf_progressing" placeholder = "0" autofocus size="40" disabled></span>
+                            <span><input id = "iptInProgess" class = "number" type="number" onChange = "calculatePerformance()" name="prf_progressing" placeholder = "0" autofocus size="40" disabled></span>
                             <span class = "gap"></span>
-                            <span><input id = "iptComplete" class = "number" type="number" name="prf_completed" placeholder = "0" autofocus size="40" disabled></span>
+                            <span><input id = "iptCompleted" class = "number" type="number" onChange = "calculatePerformance()" name="prf_completed" placeholder = "0" autofocus size="40" disabled></span>
                             <span class = "gap"></span>
-                            <span><input id = "iptOver" class = "number" type="number" name="prf_overdue" placeholder = "0" autofocus size="40" disabled></span>
+                            <span><input id = "iptOverdue" class = "number" type="number" onChange = "calculatePerformance()" name="prf_overdue" placeholder = "0" autofocus size="40" disabled></span>
                             <span class = "gap"></span>
-                            <span><input id = "iptDelay" class = "number" type="number" name="prf_delayed" placeholder = "0" autofocus size="40" disabled></span>
+                            <span><input id = "iptDelayed" class = "number" type="number" onChange = "calculatePerformance()" name="prf_delayed" placeholder = "0" autofocus size="40" disabled></span>
                             <span class = "gap"></span>
-                            <span><input id = "optFinal" class = "number" type="number" name="prf_overall" placeholder = "0" autofocus size="40" disabled>%</span>
+                            <span><input id = "optPerformance" class = "number" type="number" name="prf_overall" placeholder = "0" autofocus size="40" disabled>%</span>
                         </div><br>
                     </form>
 
@@ -173,7 +192,7 @@
                         <span class = "gap"></span>
                         <span></span>
                         <span class = "gap"></span>
-                        <span><button id = "btnEdit" type = "button" onclick = "makeEditable('iptProgess', 'iptComplete', 'iptOver', 'iptDelay')">Edit</button></span>
+                        <span><button id = "btnEdit" type = "button" onclick = "makeEditable('iptInProgess', 'iptCompleted', 'iptOverdue', 'iptDelayed')">Edit</button></span>
                         <span class = "gap"></span>
                         <span></span>
                         <span class = "gap"></span>
