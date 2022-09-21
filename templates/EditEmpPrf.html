@@ -13,7 +13,7 @@
                 border-radius: 5px;
                 color: white;
                 height: 100%;
-                width: 80%;
+                width: 100%;
             }
 
             button:hover {
@@ -36,7 +36,7 @@
                 color: grey;
                 font-size: 10pt;
                 height: 20px;
-                width: 85%;
+                width: 100%;
             }
  
             span {
@@ -45,16 +45,20 @@
                 text-align: left;
             }
 
-            .button {
-                text-align: center;
-            }
-
             .employee {
                 background-color: lightgrey;
                 border: 1px solid transparent;
                 border-radius: 15px;
                 height: 200px;
                 width: 750px;
+            }
+
+            .gap {
+                width: 5%;
+            }
+
+            .number {
+                width: 20%;
             }
 
             .table {
@@ -67,7 +71,7 @@
                 background-color: lightgrey;
                 border: 1px solid transparent;
                 border-radius: 15px;
-                height: 220px;
+                height: 200px;
                 width: 750px;
             }
 
@@ -90,42 +94,70 @@
 
                     <div class = "table">
                         <span>Employee ID:</span>
+                        <span class = "gap"></span>
                         <span>First Name:</span>
+                        <span class = "gap"></span>
                         <span>Last Name:</span>
                     </div>
 
-                    <form action="/addemp" autocomplete="on" method = "POST" enctype="multipart/form-data">
+                    <form action="/getEmp" autocomplete="on" method = "GET" enctype="multipart/form-data">
                         <div class = "table">
                             <span><input type="number" name="emp_id" placeholder = "XXXX" autofocus size="40"></span>
+                            <span class = "gap"></span>
                             <span><input type="text" name="first_name" placeholder = "Jay Sheng" disabled></span>
+                            <span class = "gap"></span>
                             <span><input type="text" name="last_name" placeholder = "Ho" disabled></span>
                         </div>
                     </form><br>
 
                     <div class = "table">
                         <span></span>
-                        <span class = "button"><button>Check Employee</button></span>
+                        <span class = "gap"></span>
+                        <span><button>Check Employee</button></span>
+                        <span class = "gap"></span>
                         <span></span>
                     </div>
-                </div><br>
+                </div><br><br>
 
                 <div class = "performance">
                     <p class = "title">Perfomance</p>
 
                     <div class = "table">
                         <span>In-Progress</span>
+                        <span class = "gap"></span>
                         <span>Completed</span>
+                        <span class = "gap"></span>
                         <span>Overdue</span>
+                        <span class = "gap"></span>
                         <span>Delayed</span>
+                        <span class = "gap"></span>
                         <span>Overall</span>
                     </div>
 
+                    <form action="/editPrf" autocomplete="on" method = "POST" enctype="multipart/form-data">
+                        <div class = "table">
+                            <span><input class = "number" type="number" name="prf_progressing" placeholder = "0" autofocus size="40" disabled></span>
+                            <span class = "gap"></span>
+                            <span><input class = "number" type="number" name="prf_completed" placeholder = "0" autofocus size="40" disabled></span>
+                            <span class = "gap"></span>
+                            <span><input class = "number" type="number" name="prf_overdue" placeholder = "0" autofocus size="40" disabled></span>
+                            <span class = "gap"></span>
+                            <span><input class = "number" type="number" name="prf_delayed" placeholder = "0" autofocus size="40" disabled></span>
+                            <span class = "gap"></span>
+                            <span><input class = "number" type="number" name="prf_overall" placeholder = "0" autofocus size="40" disabled>%</span>
+                        </div><br>
+                    </form>
+
                     <div class = "table">
-                        <span>0</span>
-                        <span>0</span>
-                        <span>0</span>
-                        <span>0</span>
-                        <span>0</span>
+                        <span></span>
+                        <span class = "gap"></span>
+                        <span></span>
+                        <span class = "gap"></span>
+                        <span><button>Edit</button></span>
+                        <span class = "gap"></span>
+                        <span><button>Cancel</button></span>
+                        <span class = "gap"></span>
+                        <span><button>Save</button></span>
                     </div>
                 </div>
             </body>
